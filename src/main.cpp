@@ -1,0 +1,19 @@
+#include "ofApp.h" // ofxBlackMagic‚ğg‚¤‚Æ‚«ofMain.h‚æ‚èæ‚É’è‹`‚·‚é (See https://github.com/elliotwoods/ofxBlackmagic2)
+#include "ofMain.h"
+//#include "ofApp.h"
+#include "ofAppGLFWWindow.h"
+
+//========================================================================
+int main( ){
+//	ofSetupOpenGL(800, 600,OF_WINDOW);			// <-------- setup the GL context
+
+    ofAppGLFWWindow window;
+    ofSetupOpenGL(&window, 1200, 600, OF_WINDOW);
+//    ofSetupOpenGL(&window, 800, 600, OF_FULLSCREEN);
+
+	// this kicks off the running of my app
+	// can be OF_WINDOW or OF_FULLSCREEN
+	// pass in width and height too:
+	ofRunApp(new ofApp());
+
+}
