@@ -1,0 +1,19 @@
+# セットアップの方法
+
+## openFrameworks 0.8.4のダウンロード
+
+- [openFrameworksのサイト](http://www.openframeworks.cc/download) から0.8.4をダウンロード
+- zipを適当なディレクトリに展開する
+
+## アドオンの追加
+
+- added_addons.zip を展開する
+- of_v0.8.4_[platform]_release\addonsフォルダにコピー
+
+## アプリケーションのソースのコピー
+
+- of_v0.8.4_[platform]_release\apps\myApps に適当なフォルダを作ってこのフォルダ以下のファイルをコピーする
+
+## ビルド
+
+- プロジェクトファイルを開いてビルド
