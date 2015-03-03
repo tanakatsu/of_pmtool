@@ -34,7 +34,9 @@ void DeviceState::draw()
             ofTranslate(screenWidth / 2 * i, 0);
 
             if (getSharedData().capDeviceMgr.isInitialized(i)) {
-                getSharedData().roiImage[i].draw(x, y, previewWidth, previewHeight);
+                if (getSharedData().roiImage[i].isAllocated()) {
+                    getSharedData().roiImage[i].draw(x, y, previewWidth, previewHeight);
+                }
             }
             ofPopMatrix();
         }

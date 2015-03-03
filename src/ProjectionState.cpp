@@ -53,7 +53,9 @@ void ProjectionState::draw()
 
     for (int i = 0; i < 2; i++) {
         getSharedData().fbo[i].begin();
-        getSharedData().roiImage[i].draw(0, 0);
+        if (getSharedData().roiImage[i].isAllocated()) {
+            getSharedData().roiImage[i].draw(0, 0);
+        }
         getSharedData().fbo[i].end();
     }
 
