@@ -29,7 +29,7 @@ void SharedData::updateROI()
         warperOut[i].setSourceRect(ofRectangle(0, 0, roi.width, roi.height));
 
         if (i == activeCameraNo) {
-            // ‘€ì‘ÎÛ‚ÌƒJƒƒ‰‚Ìê‡
+            // æ“ä½œå¯¾è±¡ã®ã‚«ãƒ¡ãƒ©ã®å ´åˆ
             warperActive.setSourceRect(ofRectangle(0, 0, roi.width, roi.height));
         }
     }

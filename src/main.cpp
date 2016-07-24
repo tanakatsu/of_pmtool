@@ -1,4 +1,4 @@
-#include "ofApp.h" // ofxBlackMagic‚ğg‚¤‚Æ‚«ofMain.h‚æ‚èæ‚É’è‹`‚·‚é (See https://github.com/elliotwoods/ofxBlackmagic2)
+#include "ofApp.h" // ofxBlackMagicã‚’ä½¿ã†ã¨ãofMain.hã‚ˆã‚Šå…ˆã«å®šç¾©ã™ã‚‹ (See https://github.com/elliotwoods/ofxBlackmagic2)
 #include "ofMain.h"
 //#include "ofApp.h"
 #include "ofAppGLFWWindow.h"

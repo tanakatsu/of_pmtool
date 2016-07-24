@@ -152,7 +152,7 @@ void ofxImageROI::draw(int x, int y, float w, float h)
         scale_h = h / this->height;
     }
 
-    // ROI‚ªƒZƒbƒg‚³‚ê‚Ä‚È‚¢ê‡‚Í‰æ‘œƒTƒCƒY‚ÅROI‚ğƒZƒbƒg‚·‚é
+    // ROIãŒã‚»ãƒƒãƒˆã•ã‚Œã¦ãªã„å ´åˆã¯ç”»åƒã‚µã‚¤ã‚ºã§ROIã‚’ã‚»ãƒƒãƒˆã™ã‚‹
     if (bSetROI == false) {
         setROI();
     }
@@ -162,7 +162,7 @@ void ofxImageROI::draw(int x, int y, float w, float h)
         ofPushMatrix();
         ofTranslate(x, y);
 
-        // ofScale‚ÅƒXƒP[ƒŠƒ“ƒO‚·‚é‚Æƒ}ƒjƒsƒ…ƒŒ[ƒ^[‚à¬‚³‚­‚È‚Á‚Ä‚µ‚Ü‚¤
+        // ofScaleã§ã‚¹ã‚±ãƒ¼ãƒªãƒ³ã‚°ã™ã‚‹ã¨ãƒãƒ‹ãƒ”ãƒ¥ãƒ¬ãƒ¼ã‚¿ãƒ¼ã‚‚å°ã•ããªã£ã¦ã—ã¾ã†
         for (int i = 0; i < 4; i++) {
             tmpCornerPoints[i].set(cornerPoints[i].x * scale_w, cornerPoints[i].y * scale_h);
         }
@@ -426,20 +426,20 @@ void ofxImageROI::projectToTarget(ofPoint *dstPoints)
 	cvSetData(src_mat, cvsrc, sizeof(CvPoint2D32f));
 	cvSetData(dst_mat, cvdst, sizeof(CvPoint2D32f));
 
-	CvMat * translate = cvCreateMat(3,3,CV_32FC1); // —ÌˆæŠm•Û
-    cvFindHomography(src_mat, dst_mat, translate); // ƒzƒ‚ƒOƒ‰ƒtƒBŒvZ
+	CvMat * translate = cvCreateMat(3,3,CV_32FC1); // é ˜åŸŸç¢ºä¿
+    cvFindHomography(src_mat, dst_mat, translate); // ãƒ›ãƒ¢ã‚°ãƒ©ãƒ•ã‚£è¨ˆç®—
 
-    // ‰æ‘œƒTƒCƒY‚ª•Ï‚í‚Á‚½‚Æ‚«
+    // ç”»åƒã‚µã‚¤ã‚ºãŒå¤‰ã‚ã£ãŸã¨ã
     if (this->bAllocated() == true && inputImg.bAllocated == false) {
         projectedImage.allocate(this->width, this->height, OF_IMAGE_COLOR);
         inputImg.allocate(this->width, this->height);
         outputImg.allocate(this->width, this->height);
     }
 
-    inputImg.setFromPixels(this->getPixelsRef()); // ‰æ‘œ‚Ìƒ[ƒh
-    cvWarpPerspective(inputImg.getCvImage(), outputImg.getCvImage(), translate, CV_INTER_LINEAR+CV_WARP_FILL_OUTLIERS, cvScalarAll(255)); // “§‹“Š‰e•ÏŠ·
+    inputImg.setFromPixels(this->getPixelsRef()); // ç”»åƒã®ãƒ­ãƒ¼ãƒ‰
+    cvWarpPerspective(inputImg.getCvImage(), outputImg.getCvImage(), translate, CV_INTER_LINEAR+CV_WARP_FILL_OUTLIERS, cvScalarAll(255)); // é€è¦–æŠ•å½±å¤‰æ›
 
-    //o—ÍŒ‹‰Ê‚ğofImage‚É•ÏŠ·
+    //å‡ºåŠ›çµæœã‚’ofImageã«å¤‰æ›
     projectedImage.setFromPixels(outputImg.getPixels(), outputImg.getWidth(), outputImg.getHeight(), OF_IMAGE_COLOR);
 
     cvReleaseMat(&translate);

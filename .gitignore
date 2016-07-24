@@ -11,3 +11,4 @@ bin/nesicPMTestDebug.app
 bin/nesicPMTestRelease.app
 *.depend
 *.layout
+.DS_store

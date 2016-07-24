@@ -21,7 +21,7 @@ void CaptureDeviceManager::setup(int width, int height)
 	captureWidth = width;
 	captureHeight = height;
 
-	// USBƒJƒƒ‰‚ÌƒŠƒXƒgæ“¾
+	// USBã‚«ãƒ¡ãƒ©ã®ãƒªã‚¹ãƒˆå–å¾—
 	usbDevices = dummyGrabber.listDevices();
 
     for(int i = 0; i < usbDevices.size(); i++){
@@ -41,10 +41,10 @@ void CaptureDeviceManager::setup(int width, int height)
         }
 	}
 
-	// BlackMagicƒLƒƒƒvƒ`ƒƒ[ƒ{[ƒh‚ÌƒŠƒXƒgæ“¾
+	// BlackMagicã‚­ãƒ£ãƒ—ãƒãƒ£ãƒ¼ãƒœãƒ¼ãƒ‰ã®ãƒªã‚¹ãƒˆå–å¾—
 	/*
 	auto deviceList = ofxBlackmagic::Iterator::getDeviceList();
-	int no = CAPTURE_DEVICE_BLACKMAGIC_OFFSET; // USBƒJƒƒ‰‚Æ‹æ•Ê‚·‚é‚½‚ß‚ÉƒIƒtƒZƒbƒg‚Â‚¯‚é
+	int no = CAPTURE_DEVICE_BLACKMAGIC_OFFSET; // USBã‚«ãƒ¡ãƒ©ã¨åŒºåˆ¥ã™ã‚‹ãŸã‚ã«ã‚ªãƒ•ã‚»ãƒƒãƒˆã¤ã‘ã‚‹
 
 	for(auto device : deviceList) {
 		cout << no << ": " << device.modelName << endl;
@@ -79,7 +79,7 @@ void CaptureDeviceManager::onDeviceSelected(int cameraNo, int deviceId)
     if (cameraNo < 0) return;
     if (selectedDeviceId[cameraNo] == deviceId) return;
 
-    // Œ»İÚ‘±’†‚ÌƒfƒoƒCƒX‚ª‚ ‚é‚©ƒ`ƒFƒbƒN‚·‚é
+    // ç¾åœ¨æ¥ç¶šä¸­ã®ãƒ‡ãƒã‚¤ã‚¹ãŒã‚ã‚‹ã‹ãƒã‚§ãƒƒã‚¯ã™ã‚‹
     int deviceIdOwnedByMe = -1;
     for (int i = 0; i < deviceOwnerCameraNo.size(); i++) {
         if (deviceOwnerCameraNo[i] == cameraNo) {
@@ -88,22 +88,22 @@ void CaptureDeviceManager::onDeviceSelected(int cameraNo, int deviceId)
         }
     }
 
-    // Œ»İÚ‘±’†‚ÌƒfƒoƒCƒX‚ğ‰ğ•ú‚·‚é
+    // ç¾åœ¨æ¥ç¶šä¸­ã®ãƒ‡ãƒã‚¤ã‚¹ã‚’è§£æ”¾ã™ã‚‹
     if (deviceIdOwnedByMe >= 0) {
-        selectedDeviceId[cameraNo] = -1; // ˆê’UƒNƒŠƒA
-        deviceOwnerCameraNo[deviceIdOwnedByMe] = -1; // ƒNƒŠƒA
+        selectedDeviceId[cameraNo] = -1; // ä¸€æ—¦ã‚¯ãƒªã‚¢
+        deviceOwnerCameraNo[deviceIdOwnedByMe] = -1; // ã‚¯ãƒªã‚¢
 
-        // ‰ğ•ú‚µ‚½ƒfƒoƒCƒX‚ğ‘¼‚ÌƒJƒƒ‰‚ª‘I‘ğ‚µ‚Ä‚¢‚½ê‡
+        // è§£æ”¾ã—ãŸãƒ‡ãƒã‚¤ã‚¹ã‚’ä»–ã®ã‚«ãƒ¡ãƒ©ãŒé¸æŠã—ã¦ã„ãŸå ´åˆ
         for (int i = 0; i < 2; i++) {
             if (selectedDeviceId[i] == deviceId) {
 				open(i, deviceId, captureWidth, captureHeight);
-                deviceOwnerCameraNo[deviceId] = i; // ƒI[ƒi[î•ñ‚ğXV‚·‚é
+                deviceOwnerCameraNo[deviceId] = i; // ã‚ªãƒ¼ãƒŠãƒ¼æƒ…å ±ã‚’æ›´æ–°ã™ã‚‹
                 break;
             }
         }
     }
 
-    if (deviceOwnerCameraNo[getIndexFromDeviceId(deviceId)] < 0) { // ‘¼‚ÌƒJƒƒ‰‚Åg—p‚³‚ê‚Ä‚È‚¢ê‡
+    if (deviceOwnerCameraNo[getIndexFromDeviceId(deviceId)] < 0) { // ä»–ã®ã‚«ãƒ¡ãƒ©ã§ä½¿ç”¨ã•ã‚Œã¦ãªã„å ´åˆ
         deviceOwnerCameraNo[getIndexFromDeviceId(deviceId)] = cameraNo;
         open(cameraNo, deviceId, captureWidth, captureHeight);
     }

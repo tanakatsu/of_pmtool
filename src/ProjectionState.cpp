@@ -31,7 +31,7 @@ void ProjectionState::update()
         }
     }
 
-    // ���쒆�̕ϊ��^�[�Q�b�g�̈�𔽉f
+    // 操作中の変換ターゲット領域を反映
     int activeCameraNo = getSharedData().activeCameraNo;
     if (activeCameraNo >= 0 && activeCameraNo < 2) {
         for (int i = 0; i < 4; i++) {
@@ -107,7 +107,7 @@ void ProjectionState::draw()
         getSharedData().warperActive.drawSelectedCorner();
     }
 
-    // �f�o�b�O���\��
+    // デバッグ情報表示
     getSharedData().dispDebugInfo();
 }
 

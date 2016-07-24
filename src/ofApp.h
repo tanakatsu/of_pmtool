@@ -1,6 +1,6 @@
 #pragma once
 
-//#include "ofxBlackmagic.h" // ofMain.h‚æ‚èæ‚É’è‹`‚·‚é (See https://github.com/elliotwoods/ofxBlackmagic2)
+//#include "ofxBlackmagic.h" // ofMain.hã‚ˆã‚Šå…ˆã«å®šç¾©ã™ã‚‹ (See https://github.com/elliotwoods/ofxBlackmagic2)
 #include "ofMain.h"
 #include "ofxUI.h"
 #include "ofxStateMachine.h"

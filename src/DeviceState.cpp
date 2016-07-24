@@ -29,7 +29,7 @@ void DeviceState::draw()
 
     for (int i = 0; i < 2; i++) {
         if (getSharedData().capDeviceMgr.isDeviceActive(i)) {
-            // ofPushMatrix‚ðŽg‚¤‚Æƒ}ƒEƒXÀ•W‚ª³í‚ÉŽæ‚ê‚È‚­‚È‚é
+            // ofPushMatrixã‚’ä½¿ã†ã¨ãƒžã‚¦ã‚¹åº§æ¨™ãŒæ­£å¸¸ã«å–ã‚Œãªããªã‚‹
             ofPushMatrix();
             ofTranslate(screenWidth / 2 * i, 0);
 
@@ -42,7 +42,7 @@ void DeviceState::draw()
         }
     }
 
-    // ƒfƒoƒbƒOî•ñ•\Ž¦
+    // ãƒ‡ãƒãƒƒã‚°æƒ…å ±è¡¨ç¤º
     getSharedData().dispDebugInfo();
 }
 

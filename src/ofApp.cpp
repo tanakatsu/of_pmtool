@@ -7,7 +7,7 @@
 //--------------------------------------------------------------
 void ofApp::setup(){
 
-	// ƒVƒXƒeƒ€İ’è‚Ìƒ[ƒh
+	// ã‚·ã‚¹ãƒ†ãƒ è¨­å®šã®ãƒ­ãƒ¼ãƒ‰
     loadSystemSettings();
 
     int screenWidth = stateMachine.getSharedData().screenWidth;
@@ -17,16 +17,16 @@ void ofApp::setup(){
     int previewWidth = stateMachine.getSharedData().previewWidth;
     int previewHeight = stateMachine.getSharedData().previewHeight;
 
-    // ‰ŠúƒEƒCƒ“ƒhƒEƒTƒCƒY‚ÌƒZƒbƒg
+    // åˆæœŸã‚¦ã‚¤ãƒ³ãƒ‰ã‚¦ã‚µã‚¤ã‚ºã®ã‚»ãƒƒãƒˆ
     ofSetWindowShape(screenWidth, screenHeight);
 
-    // ƒfƒoƒCƒX–¼ƒŠƒXƒgì¬
+    // ãƒ‡ãƒã‚¤ã‚¹åãƒªã‚¹ãƒˆä½œæˆ
     stateMachine.getSharedData().capDeviceMgr.setup(captureWidth, captureHeight);
 
-    // ‹¤—Lƒf[ƒ^‚Ì‰Šú‰»
+    // å…±æœ‰ãƒ‡ãƒ¼ã‚¿ã®åˆæœŸåŒ–
     stateMachine.getSharedData().activeCameraNo = -1;
 
-    // GUI‚Ì\’z
+    // GUIã®æ§‹ç¯‰
     vector<string> device_names = stateMachine.getSharedData().capDeviceMgr.getDeviceList();
     for (int i = 0; i < 2; i++) {
         ddlGui[i] = new ofxUISuperCanvas("Camera" + ofToString(i + 1));
@@ -49,19 +49,19 @@ void ofApp::setup(){
         ofAddListener(btnGui[i]->newGUIEvent, this, &ofApp::guiEvent);
     }
 
-    // —Ìˆæw’èƒ‚ƒWƒ…[ƒ‹‚Ì‰Šú‰»
+    // é ˜åŸŸæŒ‡å®šãƒ¢ã‚¸ãƒ¥ãƒ¼ãƒ«ã®åˆæœŸåŒ–
     for (int i = 0; i < 2; i++) {
         stateMachine.getSharedData().roiImage[i].setROI(ofRectangle(0, 0, captureWidth, captureHeight));
         stateMachine.getSharedData().roiImage[i].showHandles();
     }
 
-	// ƒXƒe[ƒgƒ}ƒVƒ“‰Šú‰»
+	// ã‚¹ãƒ†ãƒ¼ãƒˆãƒã‚·ãƒ³åˆæœŸåŒ–
 	stateMachine.addState<DeviceState>();
 	stateMachine.addState<ProjectionState>();
 	stateMachine.addState<HelpState>();
 	stateMachine.changeState("device");
 
-    // ƒfƒBƒŒƒCƒWƒ‡ƒu—p‚Ì•Ï”‰Šú‰»
+    // ãƒ‡ã‚£ãƒ¬ã‚¤ã‚¸ãƒ§ãƒ–ç”¨ã®å¤‰æ•°åˆæœŸåŒ–
 	changeStateFiredAt = 0;
 	tmpActiveCameraNo = -1;
 }
@@ -76,7 +76,7 @@ void ofApp::update(){
         }
     }
 
-    // ƒ{ƒ^ƒ“‚ÌƒGƒtƒFƒNƒg‚ªI—¹‚µ‚Ä‚©‚çó‘Ô‘JˆÚ‚·‚é
+    // ãƒœã‚¿ãƒ³ã®ã‚¨ãƒ•ã‚§ã‚¯ãƒˆãŒçµ‚äº†ã—ã¦ã‹ã‚‰çŠ¶æ…‹é·ç§»ã™ã‚‹
     if (changeStateFiredAt > 0 && ofGetElapsedTimeMillis() > changeStateFiredAt) {
         changeStateFiredAt = 0;
         changeState("projection", tmpActiveCameraNo);
@@ -138,7 +138,7 @@ void ofApp::guiEvent(ofxUIEventArgs &e)
         for (int i = 0; i < 2; i++) {
             if (canvasParent->getCanvasTitle() == ((ofxUISuperCanvas *)btnGui[i])->getCanvasTitle()) {
                 if (stateMachine.getSharedData().capDeviceMgr.isDeviceActive(i)) {
-                    // ƒfƒBƒŒƒC‚ğ‚Â‚¯‚Ä‘JˆÚ‚µ‚È‚¢‚Æƒ{ƒ^ƒ“‚Ìstate‚ª‚¨‚©‚µ‚­‚È‚é
+                    // ãƒ‡ã‚£ãƒ¬ã‚¤ã‚’ã¤ã‘ã¦é·ç§»ã—ãªã„ã¨ãƒœã‚¿ãƒ³ã®stateãŒãŠã‹ã—ããªã‚‹
                     changeStateFiredAt = ofGetElapsedTimeMillis() + 150;
                     tmpActiveCameraNo = i;
                     break;
@@ -154,14 +154,14 @@ void ofApp::onDeviceSelected(int cameraNo, int deviceId)
 {
     if (cameraNo < 0) return;
 
-    // ƒLƒƒƒvƒ`ƒƒƒfƒoƒCƒX‚ğ‰Šú‰»
+    // ã‚­ãƒ£ãƒ—ãƒãƒ£ãƒ‡ãƒã‚¤ã‚¹ã‚’åˆæœŸåŒ–
     stateMachine.getSharedData().capDeviceMgr.onDeviceSelected(cameraNo, deviceId);
 
-	// ROIƒŠƒZƒbƒg
+	// ROIãƒªã‚»ãƒƒãƒˆ
 	ofxImageROI *roiImage = &stateMachine.getSharedData().roiImage[cameraNo];
     roiImage->resetROI();
 
-    // ƒ{ƒ^ƒ“•\¦
+    // ãƒœã‚¿ãƒ³è¡¨ç¤º
     btnGui[cameraNo]->setVisible(true);
 }
 
