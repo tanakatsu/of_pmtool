@@ -9,12 +9,12 @@
 
 ### Adding addons
 
-- unzip added_addons.zip
-- copy to [of_directory]/addons
+- copy added_addons_v0.9.3.zip to [of_directory]/addons
+- unzip zip file
 
 ### Copy application files 
 
-- copy application files to [of_direcotry]/apps/myApps/[your app directory]
+- copy application files to [of_direcotry]/apps/myApps/[your app directory]/
 
 ### Build & Run
 
@@ -75,8 +75,9 @@ key bindings
 
 ## Testing environments
 
-- v0.8.4 + Windows7 + Code::Blocks
+- v0.9.3 + Mac + Xcode7
 - v0.8.4 + Mac + Xcode6
+- v0.8.4 + Windows7 + Code::Blocks
 
 ## Precomiled binary
 
